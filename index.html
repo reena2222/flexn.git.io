@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Image Gallery</title>
+    
+    
+    
+
+</head>
+
+
+<body>
+
+    <style>
+   html  {
+        box-sizing: border-box;
+        background: burlywood;
+        font-size: 20px;
+        font-weight: 200;
+   }
+    body {    margin: 0; }
+        *, * :before,
+        * :after
+       {
+         box-sizing : inherit;
+    }
+    
+    .panels {
+        min-height: 100vh;
+        overflow: hidden;
+        display : flex;
+    }
+    
+    .panel {
+    
+        backface-visibility: purple;
+        color: blue;
+        text-align: center;
+        align-items: center;
+        transition: 
+        font-size 2s cubic-bezier(0.02, -0.52, 1.0, -0.43),
+        flex 2s cubic-bezier(0.02, -0.52, 1.0, -0.43),
+        background 0.2s;
+        font-size: 15px;
+        background-size: cover;
+        background-position: center;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .panel1 {
+        background-image: url(https://images.unsplash.com/photo-1615212471256-40ef810057d9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG5hdHVyYWwlMjBiZWF1dHl8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80)
+    
+    }
+    
+    .panel2 {
+        background-image: url(https://images.unsplash.com/photo-1616419481573-90712fe49871?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA2fHxuYXR1cmFsJTIwYmVhdXR5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60)
+    
+    }
+    
+    .panel3 {
+        background-image: url(https://images.unsplash.com/photo-1611650234107-b2640b38e035?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjcyfHxuYXR1cmFsJTIwYmVhdXR5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60)
+    
+    }
+    
+    .panel4 {
+        background-image: url(https://images.unsplash.com/photo-1520087236658-c15f331aad99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=680&q=80)
+    
+    }
+    
+    .panel5 {
+        background-image: url(https://images.unsplash.com/photo-1528994618239-4d83bbdb7a0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=300&q=60)
+    
+    }
+    
+    .panel > * {
+        margin : 0;
+        width :100% ;
+        transition : transform 0.5s;
+        flex : 1 0 auto;
+        display : flex;
+        justify-content: center;
+        align-items: center;
+    }
+     
+    .panel > *:first-child 
+    { 
+        transform : translateY(-50%);
+    }
+    
+    .panel.open-active > *:first-child
+    { 
+        transform: translateY(0);
+    }
+    
+    .panel > *:last-child 
+    { 
+        transform : translateY(50%);
+    }
+    
+    .panel.open-active > *:last-child
+    { 
+        transform: translateY(0);
+    }
+    
+    .panel p {
+        text-transform: unset;
+        font-family: 'Amatic SC', cursive ;
+        font-size: 2em;
+    }
+    
+    .panel p  :nth-child(2)
+    {
+        font-family: 2em;
+    
+    }
+    
+    .panel.open {
+        flex: 5;
+        font-size: 2.5em;
+    }
+    
+    </style>
+
+    <div class="panels">
+        <div class="panel panel1">
+            <p>Hey</p>
+            <p>Have</p>
+            <p>Fun</p>
+        </div>
+
+        <div class="panel panel2">
+            <p>It's</p>
+            <p>Very</p>
+            <p>Cool</p>
+        </div>
+        <div class="panel panel3">
+            <p>Give</p>
+            <p>Take</p>
+            <p>Share</p>
+        </div>
+        <div class="panel panel4">
+            <p>Never</p>
+            <p>Be</p>
+            <p>-ve</p>
+        </div>
+        <div class="panel panel5">
+            <p>Always</p>
+            <p>Be</p>
+            <p>+ve </p>
+        </div>
+    </div>
+
+
+<script>
+
+const panels= document.querySelectorAll('.panel');
+
+    function toggleOpen ()
+    {
+        this.classList.toggle('open');
+    }
+    
+    function toggleActive(e)
+    {
+        if (e.propertyName.includes('flex'))
+        {
+        this.classList.toggle('open-active');
+        }
+    }
+    
+    panels.forEach(panel => panel.addEventListener('click',toggleOpen));
+    
+    panels.forEach(panel => panel.addEventListener('transitioned',toggleActive));
+    
+</script>    
+
+
+
+</body>
+    
+ 
+
+</html>
+
+
+
+
+
